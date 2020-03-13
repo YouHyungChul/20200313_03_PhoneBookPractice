@@ -91,12 +91,16 @@ public class MainDrive {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			
+			int phoneNumCount = 0;
+			
 			while (true) {
 				String line = br.readLine();
 				
 				if (line == null) {
 					break;
 				}
+				
+				phoneNumCount++;
 				
 				String[] infoArr = line.split("/");
 				
@@ -113,6 +117,8 @@ public class MainDrive {
 				System.out.println(userInfoStr);
 				
 			}
+			
+			System.out.println(String.format("총 저장 번호 갯수 : %d개", phoneNumCount));
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
