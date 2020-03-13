@@ -1,7 +1,10 @@
 package code;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -33,7 +36,7 @@ public class MainDrive {
 				addPhoneNum();
 			}
 			else if (userInput == 2) {
-				
+				readAllContracts();
 			}
 			else {
 				System.out.println("잘못된 입력입니다.");
@@ -76,6 +79,34 @@ public class MainDrive {
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	static void readAllContracts() {
+		
+		File file = new File("phoneBook.txt");
+		
+		try {
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			
+			while (true) {
+				String line = br.readLine();
+				
+				if (line == null) {
+					break;
+				}
+				
+				System.out.println(line);
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 			
