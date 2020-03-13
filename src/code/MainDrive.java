@@ -1,5 +1,9 @@
 package code;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainDrive {
@@ -26,7 +30,7 @@ public class MainDrive {
 				break;
 			}
 			else if (userInput == 1) {
-				
+				addPhoneNum();
 			}
 			else if (userInput == 2) {
 				
@@ -41,6 +45,40 @@ public class MainDrive {
 		
 	}
 	
+	static void addPhoneNum() {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("**전화 번호 등록**");
+		System.out.print("이름 : ");
+		String name = scan.nextLine();
+		
+		System.out.print("생년 : ");
+		int birthYear = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.print("폰번 : ");
+		String phoneNum = scan.nextLine();
+		
+		File file = new File("phoneBook.txt");
+		try {
+			FileWriter fw = new FileWriter(file, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			bw.append(String.format("%s/%d/%s", name, birthYear, phoneNum));
+			bw.newLine();
+			
+			bw.close();
+			fw.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+			
 	
 }
 
